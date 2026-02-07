@@ -1,6 +1,7 @@
 import { getCurrentUser } from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from '@/app/libs/prismadb'
+import { pusherServer } from "@/app/libs/pusher";
 
 export async function POST(
     request: Request
@@ -18,7 +19,7 @@ export async function POST(
         if(!currentUser?.id || !currentUser?.email){
             return new NextResponse('Unathorized request', {status: 401})
         }
-        if(isGroup && (!members || members < 2 || !name)){
+        if(isGroup && (!members || members.length < 2 || !name)){
             return new NextResponse('Not enough members to create a group', {status: 400})
         }
 
@@ -44,6 +45,13 @@ export async function POST(
                     // you need to declare it like this - to show image, name, etc.
                 }
             });
+            newConversation.users.forEach((user) => {
+                if(user.email){
+                    pusherServer.trigger(user.email, 'conversation:new', newConversation)
+                }
+            })
+
+
             return NextResponse.json(newConversation);
         }
 
@@ -89,6 +97,14 @@ export async function POST(
                 users: true
             }
         });
+
+            newConversation.users.map((user) => {
+                if(user.email){
+                    pusherServer.trigger(user.email, 'conversation:new', newConversation)
+                }
+            })
+
+
 
         return NextResponse.json(newConversation);
 
