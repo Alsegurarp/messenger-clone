@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { MdOutlineGroupAdd } from 'react-icons/md';
 import { useEffect, useMemo, useState } from 'react';
 import ConversationBox from './ConversationBox';
-import { User } from '@prisma/client';
+import { User } from '../../generated/prisma/client';
 import GroupChatModal from './GroupChatModal';
 import { useSession } from 'next-auth/react';
 import { pusherClient } from '@/app/libs/pusher';

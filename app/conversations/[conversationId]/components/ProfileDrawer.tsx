@@ -1,6 +1,6 @@
 'use client'
 import React, { Fragment, useMemo, useState } from 'react'
-import { Conversation, User } from '@prisma/client'
+import { Conversation, User } from '../../../generated/prisma/client'
 import useOtherUser from '@/app/hooks/useOtherUser'
 import { format } from 'date-fns'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'

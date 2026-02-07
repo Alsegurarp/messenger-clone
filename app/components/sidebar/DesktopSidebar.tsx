@@ -3,7 +3,8 @@ import useRoutes from '@/app/hooks/useRoutes'
 import { useState } from 'react';
 import DesktopItem from './DesktopItem';
 
-import { User } from '@prisma/client';
+import { User } from '../../generated/prisma/client';
+
 import Avatar from '@/app/components/Avatar';
 import SettingsModal from './SettingsModal';
 // the one declared on schema

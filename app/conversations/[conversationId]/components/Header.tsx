@@ -2,7 +2,7 @@
 
 import Avatar from '@/app/components/Avatar'
 import useOtherUser from '@/app/hooks/useOtherUser'
-import { Conversation, User } from '@prisma/client'
+import { Conversation, User } from '../../../generated/prisma/client'
 import Link from 'next/link'
 import React, { useMemo, useState } from 'react'
 import { HiChevronLeft } from 'react-icons/hi'

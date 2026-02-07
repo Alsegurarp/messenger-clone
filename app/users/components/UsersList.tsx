@@ -1,5 +1,5 @@
 'use client'
-import { User } from '@prisma/client';
+import { User } from '../../generated/prisma/client';
 import React from 'react'
 import Userbox from './Userbox';
 
